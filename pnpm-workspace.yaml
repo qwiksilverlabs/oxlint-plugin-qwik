@@ -1,0 +1,12 @@
+catalogs:
+  build:
+    tsdown: ^0.21.3
+  types:
+    typescript: ^5
+  lint:
+    oxfmt: ^0.42.0
+    oxlint: ^1.57.0
+    oxlint-tsgolint: ^0.18.1
+    "@oxlint/plugins": ^1.57.0
+  test:
+    vitest: ^4.1.2

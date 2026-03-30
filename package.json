@@ -1,0 +1,36 @@
+{
+	"name": "oxlint-plugin-qwik",
+	"version": "1.0.0",
+	"private": false,
+	"description": "An Oxlint plugin for Qwik",
+	"files": [
+		"dist"
+	],
+	"type": "module",
+	"exports": {
+		".": "./dist/index.mjs",
+		"./package.json": "./package.json"
+	},
+	"scripts": {
+		"build": "tsdown",
+		"dev": "tsdown --watch",
+		"format": "oxfmt",
+		"lint": "oxlint --type-aware --type-check",
+		"lint:fix": "oxlint --fix",
+		"test": "vitest"
+	},
+	"dependencies": {
+		"@oxlint/plugins": "catalog:lint"
+	},
+	"devDependencies": {
+		"oxfmt": "catalog:lint",
+		"oxlint": "catalog:lint",
+		"oxlint-tsgolint": "catalog:lint",
+		"tsdown": "catalog:build",
+		"typescript": "catalog:types",
+		"vitest": "catalog:test"
+	},
+	"engines": {
+		"node": ">=22"
+	}
+}

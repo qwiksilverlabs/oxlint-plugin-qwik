@@ -1,0 +1,21 @@
+import { defineConfig } from "oxfmt";
+
+export default defineConfig({
+	useTabs: true,
+	tabWidth: 4,
+	printWidth: 100,
+	endOfLine: "lf",
+	bracketSameLine: true,
+	bracketSpacing: true,
+	ignorePatterns: [],
+
+	overrides: [
+		{
+			files: ["*.yml", "*.yaml"],
+			options: {
+				tabWidth: 2,
+				useTabs: false,
+			},
+		},
+	],
+});
