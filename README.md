@@ -9,6 +9,25 @@
 
 A set of Oxlint rules to help developers write better Qwik code
 
-## License
+## Usage
 
-This project is licensed under the MIT license. Check [LICENSE](./LICENSE) for further details.
+```sh
+npm add -D oxlint-plugin-qwik
+pnpm add -D oxlint-plugin-qwik
+yarn add -D oxlint-plugin-qwik
+bun add -D oxlint-plugin-qwik
+```
+
+## Configurations
+
+```typescript
+import { defineConfig } from "oxlint";
+
+export default defineConfig({
+	jsPlugins: ["oxlint-plugin-qwik"],
+	rules: {
+		// override rules
+		// "qwik/jsx-img": "error",
+	},
+});
+```
