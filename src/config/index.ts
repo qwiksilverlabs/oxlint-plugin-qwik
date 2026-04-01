@@ -1,0 +1,31 @@
+import { defineConfig } from "oxlint";
+
+export const recommendedConfig = defineConfig({
+	plugins: ["react"],
+	jsPlugins: ["oxlint-plugin-qwik"],
+	rules: {
+		"qwik/jsx-a-tag": "warn",
+		"qwik/jsx-img": "warn",
+		"qwik/use-method-usage": "error",
+		"qwik/no-react-props": "error",
+		"qwik/no-use-visible-task": "warn",
+		"qwik/jsx-no-script-url": "warn",
+
+		"react/jsx-key": "error",
+	},
+});
+
+export const strictRules = defineConfig({
+	plugins: ["react"],
+	jsPlugins: ["oxlint-plugin-qwik"],
+	rules: {
+		"qwik/jsx-a-tag": "error",
+		"qwik/jsx-img": "error",
+		"qwik/use-method-usage": "error",
+		"qwik/no-react-props": "error",
+		"qwik/no-use-visible-task": "warn",
+		"qwik/jsx-no-script-url": "error",
+
+		"react/jsx-key": "error",
+	},
+});
