@@ -43,19 +43,19 @@ A list of rules that we are currently based is in [here](https://qwik.dev/docs/a
 - ⌛️: In progress
 - ⚓: Native support
 
-|        Rule         | Status |
-| :-----------------: | :----: |
-|  use-method-usage   |   ✅   |
-| valid-lexical-scope |   🚫   |
-|   loader-location   |   🚫   |
-|   no-react-props    |   ✅   |
-|  prefer-classlist   |   🚫   |
-|  jsx-no-script-url  |   ✅   |
-|       jsx-key       |   ⚓   |
-|    unused-server    |   🚫   |
-|       jsx-img       |   ✅   |
-|        jsx-a        |   ✅   |
-| no-use-visible-task |   ✅   |
+|           Rule           | Status |
+| :----------------------: | :----: |
+|  qwik/use-method-usage   |   ✅   |
+| qwik/valid-lexical-scope |   🚫   |
+|   qwik/loader-location   |   🚫   |
+|   qwik/no-react-props    |   ✅   |
+|  qwik/prefer-classlist   |   🚫   |
+|  qwik/jsx-no-script-url  |   ✅   |
+|       qwik/jsx-key       |   ⚓   |
+|    qwik/unused-server    |   🚫   |
+|       qwik/jsx-img       |   ✅   |
+|      qwik/jsx-a-tag      |   ✅   |
+| qwik/no-use-visible-task |   ✅   |
 
 ## Contributing
 
