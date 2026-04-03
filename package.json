@@ -19,6 +19,10 @@
 		"email": "hi@tobynguyen.net",
 		"url": "https://tobynguyen.net"
 	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/qwiksilverlabs/oxlint-plugin-qwik.git"
+	},
 	"files": [
 		"dist"
 	],
