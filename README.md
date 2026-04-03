@@ -7,7 +7,9 @@
 > [!WARNING]
 > THIS PLUGIN IS A WORK IN PROGRESS!
 
-A set of Oxlint rules to help developers write better Qwik code
+A set of Oxlint rules to help developers write better Qwik code.
+
+This project is a port of [`eslint-plugin-qwik`](https://github.com/QwikDev/qwik/tree/main/packages/eslint-plugin-qwik).
 
 ## Usage
 
@@ -31,3 +33,30 @@ export default defineConfig({
 	},
 });
 ```
+
+## Available rules
+
+A list of rules that we are currently based is in [here](https://qwik.dev/docs/advanced/eslint/).
+
+- ✅: Supported
+- 🚫: Not in progress
+- ⌛️: In progress
+- ⚓: Native support
+
+|        Rule         | Status |
+| :-----------------: | :----: |
+|  use-method-usage   |   ✅   |
+| valid-lexical-scope |   🚫   |
+|   loader-location   |   🚫   |
+|   no-react-props    |   ✅   |
+|  prefer-classlist   |   🚫   |
+|  jsx-no-script-url  |   ✅   |
+|       jsx-key       |   ⚓   |
+|    unused-server    |   🚫   |
+|       jsx-img       |   ✅   |
+|        jsx-a        |   ✅   |
+| no-use-visible-task |   ✅   |
+
+## Contributing
+
+This project welcomes contributions of all types. Before you start work on a feature that you would like to contribute, please read our [Contributor's Guide](https://github.com/qwiksilverlabs/contribute).
