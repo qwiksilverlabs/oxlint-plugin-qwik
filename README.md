@@ -22,6 +22,23 @@ bun add -D oxlint-plugin-qwik
 
 ## Configurations
 
+### Using default rulesets
+
+The plugin includes two primary rulesets:
+
+```typescript
+import { recommended, strict } from "oxlint-plugin-qwik/ruleset";
+import { defineConfig } from "oxlint";
+
+export default defineConfig({
+	extends: [strict], // recommended
+});
+```
+
+### Customizing your ruleset
+
+If you prefer granular control, you can register the plugin manually and toggle specific rules within the rules object.
+
 ```typescript
 import { defineConfig } from "oxlint";
 
