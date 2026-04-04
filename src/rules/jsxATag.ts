@@ -3,16 +3,15 @@ import { defineRule } from "@oxlint/plugins";
 export const jsxATag = defineRule({
 	meta: {
 		defaultOptions: [],
-		type: "problem",
+		type: "suggestion",
 		docs: {
 			description: "For a perfect SEO score, always provide href attribute for <a> elements.",
 			recommended: "warn",
-			url: "https://qwik.dev/docs/advanced/dollar/",
 		},
 		fixable: "code",
 		schema: [],
 		messages: {
-			noHref: "For a perfect SEO score, always provide href attribute for <a> elements.",
+			noHref: "Missing href attribute in the <a> element",
 		},
 	},
 	createOnce(context) {
@@ -36,7 +35,7 @@ export const jsxATag = defineRule({
 
 						if (!hasHref) {
 							context.report({
-								node: node as any,
+								node,
 								messageId: "noHref",
 							});
 						}

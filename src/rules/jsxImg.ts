@@ -3,23 +3,17 @@ import { defineRule, type ESTree } from "@oxlint/plugins";
 export const jsxImg = defineRule({
 	meta: {
 		defaultOptions: [],
-		type: "problem",
+		type: "suggestion",
 		docs: {
 			description:
-				"For performance reasons, always provide width and height attributes for <img> elements, it will help to prevent layout shifts.",
+				"Enforces explicit 'width' and 'height' attributes on <img> elements to prevent Cumulative Layout Shift (CLS), and recommends ESM imports for local images to enable optimization.",
 			recommended: "warn",
+			url: "https://qwik.dev/docs/integrations/image-optimization/#responsive-images",
 		},
-		fixable: "code",
 		schema: [],
 		messages: {
-			noLocalSrc: `Local images can be optimized by importing using ESM, like this:
-
-  import {{importName}} from '{{importSrc}}';
-  <{{importName}} />
-
-See https://qwik.dev/docs/integrations/image-optimization/#responsive-images`,
-			noWidthHeight:
-				'Missing "width" or "height" attribute.\nFor performance reasons, always provide width and height attributes for <img> elements, it will prevent layout shifts, boosting performance and UX.',
+			noLocalSrc: `Importing via ESM is suggested because using public images will bypass the image optimization phase`,
+			noWidthHeight: `Missing "width" or "height" attribute`,
 		},
 	},
 	createOnce(context) {
@@ -52,15 +46,9 @@ See https://qwik.dev/docs/integrations/image-optimization/#responsive-images`,
 							if (literal && typeof literal.value === "string") {
 								const isLocal = literal.value.startsWith("/");
 								if (isLocal) {
-									const importSrc = `~/media${literal.value}?jsx`;
-									const importName = imgImportName(literal.value);
 									context.report({
 										node: src,
 										messageId: "noLocalSrc",
-										data: {
-											importSrc,
-											importName,
-										},
 									});
 									return;
 								}
@@ -73,6 +61,7 @@ See https://qwik.dev/docs/integrations/image-optimization/#responsive-images`,
 								attr.name.type === "JSXIdentifier" &&
 								attr.name.name === "width",
 						);
+
 						const hasHeight = node.openingElement.attributes.some(
 							(attr) =>
 								attr.type === "JSXAttribute" &&
@@ -81,7 +70,7 @@ See https://qwik.dev/docs/integrations/image-optimization/#responsive-images`,
 						);
 						if (!hasWidth || !hasHeight) {
 							context.report({
-								node: node as any,
+								node,
 								messageId: "noWidthHeight",
 							});
 						}
@@ -91,19 +80,3 @@ See https://qwik.dev/docs/integrations/image-optimization/#responsive-images`,
 		};
 	},
 });
-
-function imgImportName(value: string) {
-	const dot = value.lastIndexOf(".");
-	const slash = value.lastIndexOf("/");
-	value = value.substring(slash + 1, dot);
-	return `Img${toPascalCase(value)}`;
-}
-
-function toPascalCase(value: string) {
-	return `${value}`
-		.toLowerCase()
-		.replace(new RegExp(/[-_]+/, "g"), " ")
-		.replace(new RegExp(/[^\w\s]/, "g"), "")
-		.replace(new RegExp(/\s+(.)(\w*)/, "g"), ($1, $2, $3) => `${$2.toUpperCase() + $3}`)
-		.replace(new RegExp(/\w/), (s) => s.toUpperCase());
-}
