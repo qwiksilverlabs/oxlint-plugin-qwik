@@ -1,6 +1,6 @@
 import { defineConfig } from "oxlint";
 
-export const recommendedConfig = defineConfig({
+export const recommended = defineConfig({
 	plugins: ["react"],
 	jsPlugins: ["oxlint-plugin-qwik"],
 	rules: {
@@ -15,7 +15,7 @@ export const recommendedConfig = defineConfig({
 	},
 });
 
-export const strictRules = defineConfig({
+export const strict = defineConfig({
 	plugins: ["react"],
 	jsPlugins: ["oxlint-plugin-qwik"],
 	rules: {
