@@ -66,7 +66,7 @@ A list of rules that we are currently based is in [here](https://qwik.dev/docs/a
 | qwik/valid-lexical-scope |                                 🚫                                 |
 |   qwik/loader-location   |                                 🚫                                 |
 |   qwik/no-react-props    |                                 ✅                                 |
-|  qwik/prefer-classlist   |                                 🚫                                 |
+|  qwik/prefer-classlist   |                                 ✅                                 |
 |  qwik/jsx-no-script-url  |                                 ✅                                 |
 |       qwik/jsx-key       |                                 ⚓                                 |
 |    qwik/unused-server    | https://github.com/qwiksilverlabs/oxlint-plugin-qwik/discussions/1 |
