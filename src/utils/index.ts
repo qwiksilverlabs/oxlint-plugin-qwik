@@ -1,0 +1,1 @@
+export { propName } from "./propName";

@@ -4,6 +4,7 @@ import { jsxImg } from "@rules/jsxImg";
 import { jsxNoScriptUrl } from "@rules/jsxNoScriptUrl";
 import { noReactProps } from "@rules/noReactProps";
 import { noUseVisibleTask } from "@rules/noUseVisibleTask";
+import { preferClasslist } from "@rules/preferClasslist";
 import { useMethodUsage } from "@rules/useMethodUsage";
 
 const plugin = eslintCompatPlugin({
@@ -17,6 +18,7 @@ const plugin = eslintCompatPlugin({
 		"no-react-props": noReactProps,
 		"no-use-visible-task": noUseVisibleTask,
 		"jsx-no-script-url": jsxNoScriptUrl,
+		"prefer-classlist": preferClasslist,
 	},
 });
 
