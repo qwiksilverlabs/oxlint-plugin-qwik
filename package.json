@@ -41,7 +41,8 @@
 		"test": "vitest"
 	},
 	"dependencies": {
-		"@oxlint/plugins": "catalog:lint"
+		"@oxlint/plugins": "catalog:lint",
+		"pathe": "catalog:prod"
 	},
 	"devDependencies": {
 		"oxfmt": "catalog:lint",

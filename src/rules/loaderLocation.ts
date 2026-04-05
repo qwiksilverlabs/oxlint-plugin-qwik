@@ -1,4 +1,6 @@
 import { defineRule, type ESTree } from "@oxlint/plugins";
+import { normalize } from "pathe";
+import { getProgramBody } from "../utils";
 
 export const ROUTE_FNS: Record<string, boolean> = {
 	loader$: true,
@@ -54,7 +56,7 @@ If you understand this, you can disable this warning with:
 	create(context) {
 		const routesDir =
 			(context.options?.[0] as { routesDir: string } | undefined)?.routesDir ?? "src/routes";
-		const path = normalizePath(context.filename);
+		const path = normalize(context.filename);
 		const isLayout = /\/layout(|!|-.+)\.(j|t)sx?$/.test(path);
 		const isIndex = /\/index(|!|@.+)\.(j|t)sx?$/.test(path);
 		const isPlugin = /\/plugin(|@.+)\.(j|t)sx?$/.test(path);
@@ -183,30 +185,4 @@ function isExported(variableDeclarator: ESTree.Node): boolean {
 		}
 	}
 	return false;
-}
-
-function getProgramBody(variableDeclarator: ESTree.Node) {
-	let program = variableDeclarator;
-	while (program.type !== "Program") {
-		program = program.parent;
-	}
-	const body = program.body;
-	return body;
-}
-
-export function normalizePath(path: string) {
-	// MIT https://github.com/sindresorhus/slash/blob/main/license
-	// Convert Windows backslash paths to slash paths: foo\\bar ➔ foo/bar
-	const isExtendedLengthPath = path.startsWith("\\\\?\\");
-	const hasNonAscii = /[^\u0000-\u0080]+/.test(path); // eslint-disable-line no-control-regex
-
-	if (isExtendedLengthPath || hasNonAscii) {
-		return path;
-	}
-
-	path = path.replace(/\\/g, "/");
-	if (path.endsWith("/")) {
-		path = path.slice(0, path.length - 1);
-	}
-	return path;
 }

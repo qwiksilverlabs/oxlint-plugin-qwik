@@ -22,6 +22,10 @@ catalogs:
     oxlint-tsgolint:
       specifier: ^0.18.1
       version: 0.18.1
+  prod:
+    pathe:
+      specifier: ^2.0.3
+      version: 2.0.3
   test:
     vitest:
       specifier: ^4.1.2
@@ -38,6 +42,9 @@ importers:
       '@oxlint/plugins':
         specifier: catalog:lint
         version: 1.57.0
+      pathe:
+        specifier: catalog:prod
+        version: 2.0.3
     devDependencies:
       oxfmt:
         specifier: catalog:lint
