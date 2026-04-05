@@ -56,15 +56,14 @@ export default defineConfig({
 A list of rules that we are currently based is in [here](https://qwik.dev/docs/advanced/eslint/).
 
 - ✅: Supported
-- 🚫: Not in progress
 - ⌛️: In progress
 - ⚓: Native support
 
 |           Rule           |                               Status                               |
 | :----------------------: | :----------------------------------------------------------------: |
 |  qwik/use-method-usage   |                                 ✅                                 |
-| qwik/valid-lexical-scope |                                 🚫                                 |
-|   qwik/loader-location   |                                 🚫                                 |
+| qwik/valid-lexical-scope |                                 ⌛️                                 |
+|   qwik/loader-location   |                                 ✅                                 |
 |   qwik/no-react-props    |                                 ✅                                 |
 |  qwik/prefer-classlist   |                                 ✅                                 |
 |  qwik/jsx-no-script-url  |                                 ✅                                 |
