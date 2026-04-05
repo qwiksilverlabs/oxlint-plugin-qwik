@@ -1,7 +1,8 @@
 import { defineRule } from "@oxlint/plugins";
 
 const isJavaScriptProtocol =
-	/^[\u0000-\u001F ]*j[\r\n\t]*a[\r\n\t]*v[\r\n\t]*a[\r\n\t]*s[\r\n\t]*c[\r\n\t]*r[\r\n\t]*i[\r\n\t]*p[\r\n\t]*t[\r\n\t]*:/i; // eslint-disable-line no-control-regex
+	// oxlint-disable-next-line no-control-regex
+	/^[\u0000-\u001F ]*j[\r\n\t]*a[\r\n\t]*v[\r\n\t]*a[\r\n\t]*s[\r\n\t]*c[\r\n\t]*r[\r\n\t]*i[\r\n\t]*p[\r\n\t]*t[\r\n\t]*:/i;
 
 export const jsxNoScriptUrl = defineRule({
 	meta: {
@@ -24,19 +25,22 @@ export const jsxNoScriptUrl = defineRule({
 				if (node.name.type === "JSXIdentifier" && node.value) {
 					let staticValue;
 
-					if (node.value.type === "Literal") {
-						staticValue = node.value.value;
-					} else if (node.value.type === "JSXExpressionContainer") {
-						const expr = node.value.expression;
+					switch (node.value.type) {
+						case "Literal":
+							staticValue = node.value.value;
+							break;
 
-						if (expr.type === "Literal") {
-							staticValue = expr.value;
-						} else if (expr.type === "TemplateLiteral" && expr.quasis.length > 0) {
-							staticValue = expr.quasis[0]?.value.cooked;
-						}
+						case "JSXExpressionContainer":
+							const expr = node.value.expression;
+
+							if (expr.type === "Literal") {
+								staticValue = expr.value;
+							} else if (expr.type === "TemplateLiteral" && expr.quasis.length > 0) {
+								staticValue = expr.quasis[0]?.value.cooked;
+							}
+							break;
 					}
 
-					// If we resolved a string, test it against the regex
 					if (typeof staticValue === "string" && isJavaScriptProtocol.test(staticValue)) {
 						context.report({
 							node: node.value,
