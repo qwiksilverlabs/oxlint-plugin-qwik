@@ -11,6 +11,7 @@ export const recommended = defineConfig({
 		"qwik/no-use-visible-task": "warn",
 		"qwik/jsx-no-script-url": "warn",
 		"qwik/prefer-classlist": "warn",
+		"qwik/loader-location": "warn",
 
 		"react/jsx-key": "error",
 	},
@@ -27,6 +28,7 @@ export const strict = defineConfig({
 		"qwik/no-use-visible-task": "warn",
 		"qwik/jsx-no-script-url": "error",
 		"qwik/prefer-classlist": "error",
+		"qwik/loader-location": "error",
 
 		"react/jsx-key": "error",
 	},

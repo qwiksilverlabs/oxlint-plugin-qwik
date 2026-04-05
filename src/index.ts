@@ -2,6 +2,7 @@ import { eslintCompatPlugin } from "@oxlint/plugins";
 import { jsxATag } from "@rules/jsxATag";
 import { jsxImg } from "@rules/jsxImg";
 import { jsxNoScriptUrl } from "@rules/jsxNoScriptUrl";
+import { loaderLocation } from "@rules/loaderLocation";
 import { noReactProps } from "@rules/noReactProps";
 import { noUseVisibleTask } from "@rules/noUseVisibleTask";
 import { preferClasslist } from "@rules/preferClasslist";
@@ -19,6 +20,7 @@ const plugin = eslintCompatPlugin({
 		"no-use-visible-task": noUseVisibleTask,
 		"jsx-no-script-url": jsxNoScriptUrl,
 		"prefer-classlist": preferClasslist,
+		"loader-location": loaderLocation,
 	},
 });
 
