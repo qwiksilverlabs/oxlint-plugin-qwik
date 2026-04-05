@@ -1,6 +1,6 @@
 {
 	"name": "oxlint-plugin-qwik",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"private": false,
 	"description": "An Oxlint plugin for Qwik",
 	"keywords": [
