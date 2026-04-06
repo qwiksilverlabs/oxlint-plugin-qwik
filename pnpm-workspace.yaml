@@ -2,6 +2,7 @@ catalogs:
   build:
     tsdown: ^0.21.3
   types:
+    "@types/node": ^25.5.2
     typescript: ^5
   lint:
     oxfmt: ^0.42.0

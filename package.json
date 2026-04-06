@@ -45,6 +45,7 @@
 		"pathe": "catalog:prod"
 	},
 	"devDependencies": {
+		"@types/node": "catalog:types",
 		"oxfmt": "catalog:lint",
 		"oxlint": "catalog:lint",
 		"oxlint-tsgolint": "catalog:lint",
