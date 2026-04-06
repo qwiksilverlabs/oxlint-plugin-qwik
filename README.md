@@ -62,7 +62,7 @@ A list of rules that we are currently based is in [here](https://qwik.dev/docs/a
 |           Rule           |                               Status                               |
 | :----------------------: | :----------------------------------------------------------------: |
 |  qwik/use-method-usage   |                                 ✅                                 |
-| qwik/valid-lexical-scope |                                 ⌛️                                 |
+| qwik/valid-lexical-scope | https://github.com/qwiksilverlabs/oxlint-plugin-qwik/discussions/2 |
 |   qwik/loader-location   |                                 ✅                                 |
 |   qwik/no-react-props    |                                 ✅                                 |
 |  qwik/prefer-classlist   |                                 ✅                                 |
