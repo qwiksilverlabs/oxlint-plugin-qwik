@@ -1,7 +1,10 @@
 import { defineRule } from "@oxlint/plugins";
 
+/**
+ * Detect `javascript:` URLs, tolerating leading control chars/spaces and embedded CR/LF/TAB.
+ */
 const isJavaScriptProtocol =
-	// oxlint-disable-next-line no-control-regex
+	// oxlint-disable-next-line no-control-regex -- intentional pattern from React DOM's sanitizeURL.js
 	/^[\u0000-\u001F ]*j[\r\n\t]*a[\r\n\t]*v[\r\n\t]*a[\r\n\t]*s[\r\n\t]*c[\r\n\t]*r[\r\n\t]*i[\r\n\t]*p[\r\n\t]*t[\r\n\t]*:/i;
 
 export const jsxNoScriptUrl = defineRule({
