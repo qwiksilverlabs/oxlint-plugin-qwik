@@ -10,6 +10,7 @@ export default defineConfig({
 		format: ["esm"],
 		dts: true,
 		clean: true,
+		exports: true,
 	},
 	resolve: {
 		alias: {

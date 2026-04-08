@@ -33,6 +33,7 @@
 		"./package.json": "./package.json"
 	},
 	"scripts": {
+		"dev": "vp pack --watch",
 		"build": "vp pack",
 		"test": "vp test",
 		"test:watch": "vp test watch",
@@ -53,5 +54,8 @@
 	"engines": {
 		"node": ">=22"
 	},
-	"packageManager": "pnpm@10.30.3"
+	"packageManager": "pnpm@10.30.3",
+	"inlinedDependencies": {
+		"oxlint": "1.58.0"
+	}
 }
