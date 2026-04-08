@@ -25,7 +25,7 @@ export default defineConfig({
 			typeAware: true,
 			typeCheck: true,
 		},
-		ignorePatterns: ["dist/**", "fixtures/**", "node_modules/**"],
+		ignorePatterns: ["dist/**", "node_modules/**"],
 	},
 	fmt: {
 		useTabs: true,
@@ -34,7 +34,7 @@ export default defineConfig({
 		endOfLine: "lf",
 		bracketSameLine: true,
 		bracketSpacing: true,
-		ignorePatterns: ["dist/**", "fixtures/**", "node_modules/**"],
+		ignorePatterns: ["dist/**", "node_modules/**"],
 		overrides: [
 			{
 				files: ["*.yml", "*.yaml"],

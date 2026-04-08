@@ -38,8 +38,7 @@
 		"test:watch": "vp test watch",
 		"lint": "vp lint",
 		"fmt": "vp fmt",
-		"check": "vp check",
-		"typecheck": "tsc --noEmit"
+		"check": "vp check"
 	},
 	"dependencies": {
 		"@oxlint/plugins": "catalog:lint",
