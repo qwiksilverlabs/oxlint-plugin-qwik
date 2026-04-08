@@ -1,8 +1,8 @@
-import { defineRule, type Fixer } from "@oxlint/plugins";
+import { defineRule, type Fixer } from '@oxlint/plugins';
 
 const reactSpecificProps = [
-	{ from: "className", to: "class" },
-	{ from: "htmlFor", to: "for" },
+	{ from: 'className', to: 'class' },
+	{ from: 'htmlFor', to: 'for' },
 ];
 
 const domElementRegex = /^[a-z]/;
@@ -10,23 +10,23 @@ export const isDOMElementName = (name: string): boolean => domElementRegex.test(
 
 export const noReactProps = defineRule({
 	meta: {
-		type: "problem",
+		type: 'problem',
 		docs: {
-			recommended: "warn",
-			description: "Disallow usage of React-specific `className`/`htmlFor` props.",
-			url: "https://qwik.dev/docs/advanced/eslint/#no-react-props",
+			recommended: 'warn',
+			description: 'Disallow usage of React-specific `className`/`htmlFor` props.',
+			url: 'https://qwik.dev/docs/advanced/eslint/#no-react-props',
 		},
-		fixable: "code",
+		fixable: 'code',
 		schema: [],
 		messages: {
-			prefer: "Prefer the `{{ to }}` prop over the deprecated `{{ from }}` prop.",
+			prefer: 'Prefer the `{{ to }}` prop over the deprecated `{{ from }}` prop.',
 		},
 	},
 
 	create(context) {
 		const modifyJsxSource = context.sourceCode
 			.getAllComments()
-			.some((c) => c.value.includes("@jsxImportSource"));
+			.some((c) => c.value.includes('@jsxImportSource'));
 		if (modifyJsxSource) {
 			return {};
 		}
@@ -36,16 +36,16 @@ export const noReactProps = defineRule({
 				for (const { from, to } of reactSpecificProps) {
 					const classNameAttribute = node.attributes.find(
 						(attr: any) =>
-							attr.type === "JSXAttribute" &&
-							attr.name.type === "JSXIdentifier" &&
+							attr.type === 'JSXAttribute' &&
+							attr.name.type === 'JSXIdentifier' &&
 							attr.name.name === from,
 					);
 
-					if (classNameAttribute && classNameAttribute.type === "JSXAttribute") {
+					if (classNameAttribute && classNameAttribute.type === 'JSXAttribute') {
 						const hasTargetProp = node.attributes.some(
 							(attr: any) =>
-								attr.type === "JSXAttribute" &&
-								attr.name.type === "JSXIdentifier" &&
+								attr.type === 'JSXAttribute' &&
+								attr.name.type === 'JSXIdentifier' &&
 								attr.name.name === to,
 						);
 
@@ -55,7 +55,7 @@ export const noReactProps = defineRule({
 
 						context.report({
 							node: classNameAttribute,
-							messageId: "prefer",
+							messageId: 'prefer',
 							data: { from, to },
 							fix,
 						});

@@ -1,5 +1,5 @@
-import { ruleTester } from ".";
-import { preferClasslist } from "@rules/preferClasslist";
+import { ruleTester } from '.';
+import { preferClasslist } from '@rules/preferClasslist';
 
 const goodPractice = `
 import { component$ } from '@builder.io/qwik';
@@ -40,19 +40,19 @@ export default component$((props) => {
 });
 `.trim();
 
-ruleTester.run("prefer-classlist", preferClasslist, {
+ruleTester.run('prefer-classlist', preferClasslist, {
 	valid: [
 		{
-			name: "Good practice",
+			name: 'Good practice',
 			code: goodPractice,
 		},
 	],
 
 	invalid: [
 		{
-			name: "Bad practice",
+			name: 'Bad practice',
 			code: badPractice,
-			errors: [{ messageId: "preferClasslist" }],
+			errors: [{ messageId: 'preferClasslist' }],
 		},
 	],
 });

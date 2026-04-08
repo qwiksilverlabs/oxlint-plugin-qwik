@@ -2,10 +2,10 @@ catalogs:
   build:
     vite-plus: 0.1.15
   types:
-    "@types/node": ^25.5.2
+    '@types/node': ^25.5.2
     typescript: ^5
   lint:
-    "@oxlint/plugins": ^1.57.0
+    '@oxlint/plugins': ^1.57.0
     oxlint: ^1.57.0
   prod:
     pathe: ^2.0.3

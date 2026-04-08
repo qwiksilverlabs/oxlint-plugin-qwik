@@ -1,16 +1,16 @@
-import { defineRule } from "@oxlint/plugins";
+import { defineRule } from '@oxlint/plugins';
 
 export const useMethodUsage = defineRule({
 	meta: {
-		type: "problem",
+		type: 'problem',
 		docs: {
-			description: "Detect invalid use of use hooks.",
-			category: "Variables",
+			description: 'Detect invalid use of use hooks.',
+			category: 'Variables',
 			recommended: true,
-			url: "https://qwik.dev/docs/advanced/eslint/#use-method-usage",
+			url: 'https://qwik.dev/docs/advanced/eslint/#use-method-usage',
 		},
 		messages: {
-			useWrongFunction: "Calling use* methods in wrong function.",
+			useWrongFunction: 'Calling use* methods in wrong function.',
 		},
 	},
 
@@ -19,70 +19,70 @@ export const useMethodUsage = defineRule({
 
 		const modifyJsxSource = sourceCode
 			.getAllComments()
-			.some((c) => c.value.includes("@jsxImportSource"));
+			.some((c) => c.value.includes('@jsxImportSource'));
 
 		if (modifyJsxSource) {
 			return {};
 		}
 
 		return {
-			"CallExpression[callee.name=/^use[A-Z]/]"(node) {
+			'CallExpression[callee.name=/^use[A-Z]/]'(node) {
 				let parent = node.parent;
 
 				while (parent) {
 					const type = parent.type;
 
 					switch (type) {
-						case "VariableDeclarator":
-						case "VariableDeclaration":
-						case "ExpressionStatement":
-						case "MemberExpression":
-						case "BinaryExpression":
-						case "UnaryExpression":
-						case "ReturnStatement":
-						case "BlockStatement":
-						case "ChainExpression":
-						case "Property":
-						case "ObjectExpression":
-						case "CallExpression":
-						case "TSAsExpression":
+						case 'VariableDeclarator':
+						case 'VariableDeclaration':
+						case 'ExpressionStatement':
+						case 'MemberExpression':
+						case 'BinaryExpression':
+						case 'UnaryExpression':
+						case 'ReturnStatement':
+						case 'BlockStatement':
+						case 'ChainExpression':
+						case 'Property':
+						case 'ObjectExpression':
+						case 'CallExpression':
+						case 'TSAsExpression':
 							break;
-						case "ArrowFunctionExpression":
-						case "FunctionExpression":
-							if (parent.parent.type === "VariableDeclarator") {
+						case 'ArrowFunctionExpression':
+						case 'FunctionExpression':
+							if (parent.parent.type === 'VariableDeclarator') {
 								if (
-									parent.parent.id?.type === "Identifier" &&
-									parent.parent.id.name.startsWith("use")
+									parent.parent.id?.type === 'Identifier' &&
+									parent.parent.id.name.startsWith('use')
 								) {
 									return;
 								}
 							}
-							if (parent.parent.type === "CallExpression") {
+							if (parent.parent.type === 'CallExpression') {
 								if (
-									parent.parent.callee.type === "Identifier" &&
-									(parent.parent.callee.name === "component$" ||
-										parent.parent.callee.name === "renderHook")
+									parent.parent.callee.type === 'Identifier' &&
+									(parent.parent.callee.name === 'component$' ||
+										parent.parent.callee.name === 'renderHook')
 								) {
 									return;
 								}
 							}
 							context.report({
 								node,
-								messageId: "useWrongFunction",
+								messageId: 'useWrongFunction',
 							});
 							return;
-						case "FunctionDeclaration":
-							if (!parent.id?.name.startsWith("use")) {
+						case 'FunctionDeclaration':
+							if (!parent.id?.name.startsWith('use')) {
 								context.report({
 									node,
-									messageId: "useWrongFunction",
+									messageId: 'useWrongFunction',
 								});
 							}
 							return;
 						default:
 							context.report({
 								node,
-								messageId: "useWrongFunction",
+								messageId: 'useWrongFunction',
 							});
 							return;
 					}

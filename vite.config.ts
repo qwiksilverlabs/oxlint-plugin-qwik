@@ -1,44 +1,44 @@
-import { resolve } from "node:path";
-import { defineConfig } from "vite-plus";
+import { resolve } from 'node:path';
+import { defineConfig } from 'vite-plus';
 
 export default defineConfig({
 	staged: {
-		"*": "vp check --fix",
+		'*': 'vp check --fix',
 	},
 	pack: {
-		entry: ["./src/index.ts", "./src/ruleset/index.ts"],
-		format: ["esm"],
+		entry: ['./src/index.ts', './src/ruleset/index.ts'],
+		format: ['esm'],
 		dts: true,
 		clean: true,
 		exports: true,
 	},
 	resolve: {
 		alias: {
-			"@rules": resolve(import.meta.dirname, "src/rules"),
+			'@rules': resolve(import.meta.dirname, 'src/rules'),
 		},
 	},
 	test: {
-		environment: "node",
-		include: ["src/**/*.test.ts"],
+		environment: 'node',
+		include: ['src/**/*.test.ts'],
 	},
 	lint: {
 		options: {
 			typeAware: true,
 			typeCheck: true,
 		},
-		ignorePatterns: ["dist/**", "node_modules/**"],
+		ignorePatterns: ['dist/**', 'node_modules/**'],
 	},
 	fmt: {
 		useTabs: true,
 		tabWidth: 4,
 		printWidth: 100,
-		endOfLine: "lf",
+		endOfLine: 'lf',
 		bracketSameLine: true,
-		bracketSpacing: true,
-		ignorePatterns: ["dist/**", "node_modules/**"],
+		singleQuote: true,
+		ignorePatterns: ['dist/**', 'node_modules/**'],
 		overrides: [
 			{
-				files: ["*.yml", "*.yaml"],
+				files: ['*.yml', '*.yaml'],
 				options: {
 					tabWidth: 2,
 					useTabs: false,

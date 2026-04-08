@@ -1,5 +1,5 @@
-import { RuleTester } from "oxlint/plugins-dev";
-import * as vitest from "vite-plus/test";
+import { RuleTester } from 'oxlint/plugins-dev';
+import * as vitest from 'vite-plus/test';
 
 RuleTester.it = vitest.it;
 RuleTester.itOnly = vitest.it.only;

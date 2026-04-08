@@ -27,8 +27,8 @@ bun add -D oxlint-plugin-qwik
 The plugin includes two primary rulesets:
 
 ```typescript
-import { recommended, strict } from "oxlint-plugin-qwik/ruleset";
-import { defineConfig } from "oxlint";
+import { recommended, strict } from 'oxlint-plugin-qwik/ruleset';
+import { defineConfig } from 'oxlint';
 
 export default defineConfig({
 	extends: [strict], // recommended
@@ -40,10 +40,10 @@ export default defineConfig({
 If you prefer granular control, you can register the plugin manually and toggle specific rules within the rules object.
 
 ```typescript
-import { defineConfig } from "oxlint";
+import { defineConfig } from 'oxlint';
 
 export default defineConfig({
-	jsPlugins: ["oxlint-plugin-qwik"],
+	jsPlugins: ['oxlint-plugin-qwik'],
 	rules: {
 		// override rules
 		// "qwik/jsx-img": "error",

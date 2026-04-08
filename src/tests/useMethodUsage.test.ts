@@ -1,5 +1,5 @@
-import { useMethodUsage } from "@rules/useMethodUsage";
-import { ruleTester } from ".";
+import { useMethodUsage } from '@rules/useMethodUsage';
+import { ruleTester } from '.';
 
 const useWrongFunctionGood = `
 export const Counter = component$(() => {
@@ -20,23 +20,23 @@ export const Counter = (() => {
 });
 `.trim();
 
-ruleTester.run("use-method-usage", useMethodUsage, {
+ruleTester.run('use-method-usage', useMethodUsage, {
 	valid: [
 		{
-			name: "call inside component",
+			name: 'call inside component',
 			code: useWrongFunctionGood,
 		},
 		{
-			name: "call inside hook",
+			name: 'call inside hook',
 			code: useWrongFunctionGood2,
 		},
 	],
 
 	invalid: [
 		{
-			name: "call not inside component or hook",
+			name: 'call not inside component or hook',
 			code: useWrongFunctionBad,
-			errors: [{ messageId: "useWrongFunction" }],
+			errors: [{ messageId: 'useWrongFunction' }],
 		},
 	],
 });

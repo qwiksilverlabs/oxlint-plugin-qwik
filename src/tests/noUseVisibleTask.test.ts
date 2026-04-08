@@ -1,14 +1,14 @@
-import { ruleTester } from ".";
-import { noUseVisibleTask } from "@rules/noUseVisibleTask";
+import { ruleTester } from '.';
+import { noUseVisibleTask } from '@rules/noUseVisibleTask';
 
-ruleTester.run("no-use-visible-task", noUseVisibleTask, {
+ruleTester.run('no-use-visible-task', noUseVisibleTask, {
 	valid: [],
 
 	invalid: [
 		{
-			name: "Bad practice",
+			name: 'Bad practice',
 			code: `useVisibleTask$(() => { console.log('Blocks main thread'); });`,
-			errors: [{ messageId: "noUseVisibleTask" }],
+			errors: [{ messageId: 'noUseVisibleTask' }],
 		},
 	],
 });

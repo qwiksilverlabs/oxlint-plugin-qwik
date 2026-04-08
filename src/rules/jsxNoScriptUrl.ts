@@ -1,4 +1,4 @@
-import { defineRule } from "@oxlint/plugins";
+import { defineRule } from '@oxlint/plugins';
 
 /**
  * Detect `javascript:` URLs, tolerating leading control chars/spaces and embedded CR/LF/TAB.
@@ -9,11 +9,11 @@ const isJavaScriptProtocol =
 
 export const jsxNoScriptUrl = defineRule({
 	meta: {
-		type: "problem",
+		type: 'problem',
 		docs: {
-			recommended: "error",
-			description: "Disallow javascript: URLs.",
-			url: "https://qwik.dev/docs/advanced/eslint/#jsx-no-script-url",
+			recommended: 'error',
+			description: 'Disallow javascript: URLs.',
+			url: 'https://qwik.dev/docs/advanced/eslint/#jsx-no-script-url',
 		},
 		schema: [],
 		messages: {
@@ -25,29 +25,29 @@ export const jsxNoScriptUrl = defineRule({
 	create(context) {
 		return {
 			JSXAttribute(node) {
-				if (node.name.type === "JSXIdentifier" && node.value) {
+				if (node.name.type === 'JSXIdentifier' && node.value) {
 					let staticValue;
 
 					switch (node.value.type) {
-						case "Literal":
+						case 'Literal':
 							staticValue = node.value.value;
 							break;
 
-						case "JSXExpressionContainer":
+						case 'JSXExpressionContainer':
 							const expr = node.value.expression;
 
-							if (expr.type === "Literal") {
+							if (expr.type === 'Literal') {
 								staticValue = expr.value;
-							} else if (expr.type === "TemplateLiteral" && expr.quasis.length > 0) {
+							} else if (expr.type === 'TemplateLiteral' && expr.quasis.length > 0) {
 								staticValue = expr.quasis[0]?.value.cooked;
 							}
 							break;
 					}
 
-					if (typeof staticValue === "string" && isJavaScriptProtocol.test(staticValue)) {
+					if (typeof staticValue === 'string' && isJavaScriptProtocol.test(staticValue)) {
 						context.report({
 							node: node.value,
-							messageId: "noJSURL",
+							messageId: 'noJSURL',
 						});
 					}
 				}
