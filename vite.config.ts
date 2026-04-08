@@ -2,6 +2,9 @@ import { resolve } from "node:path";
 import { defineConfig } from "vite-plus";
 
 export default defineConfig({
+	staged: {
+		"*": "vp check --fix",
+	},
 	pack: {
 		entry: ["./src/index.ts", "./src/ruleset/index.ts"],
 		format: ["esm"],
