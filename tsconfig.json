@@ -20,5 +20,5 @@
 			"@rules/*": ["./src/rules/*"]
 		}
 	},
-	"include": ["src"]
+	"include": ["src", "vite.config.ts"]
 }
