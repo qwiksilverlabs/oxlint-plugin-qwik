@@ -9,3 +9,5 @@ catalogs:
     oxlint: ^1.57.0
   prod:
     pathe: ^2.0.3
+  dev:
+    bumpp: ^11.0.1

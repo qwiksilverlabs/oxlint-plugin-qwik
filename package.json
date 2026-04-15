@@ -40,7 +40,8 @@
 		"lint": "vp lint",
 		"fmt": "vp fmt",
 		"check": "vp check",
-		"prepare": "vp config"
+		"prepare": "vp config",
+		"bump": "vp exec bumpp"
 	},
 	"dependencies": {
 		"@oxlint/plugins": "catalog:lint",
@@ -48,6 +49,7 @@
 	},
 	"devDependencies": {
 		"@types/node": "catalog:types",
+		"bumpp": "catalog:dev",
 		"oxlint": "catalog:lint",
 		"typescript": "catalog:types",
 		"vite-plus": "catalog:build"
