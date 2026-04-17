@@ -17,9 +17,6 @@ catalogs:
     '@oxlint/plugins':
       specifier: ^1.57.0
       version: 1.57.0
-    oxlint:
-      specifier: ^1.57.0
-      version: 1.58.0
   prod:
     pathe:
       specifier: ^2.0.3
@@ -49,9 +46,6 @@ importers:
       bumpp:
         specifier: catalog:dev
         version: 11.0.1
-      oxlint:
-        specifier: catalog:lint
-        version: 1.58.0(oxlint-tsgolint@0.18.1)
       typescript:
         specifier: catalog:types
         version: 5.9.3

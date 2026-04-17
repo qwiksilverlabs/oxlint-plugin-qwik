@@ -50,7 +50,6 @@
 	"devDependencies": {
 		"@types/node": "catalog:types",
 		"bumpp": "catalog:dev",
-		"oxlint": "catalog:lint",
 		"typescript": "catalog:types",
 		"vite-plus": "catalog:build"
 	},
