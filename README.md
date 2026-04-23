@@ -37,27 +37,27 @@ export default defineConfig({
 
 ### Customizing your ruleset
 
-If you prefer granular control, you can register the plugin manually and toggle specific rules within the rules object.
+If you prefer granular control, you can override specific rules:
 
 ```typescript
 import { defineConfig } from 'oxlint';
 
 export default defineConfig({
-	jsPlugins: ['oxlint-plugin-qwik'],
-	rules: {
-		// override rules
-		// "qwik/jsx-img": "error",
-	},
+	extends: [strict],
+	overrides: [
+		{
+			files: ['**/*.tsx'],
+			rules: {
+				'qwik/jsx-img': 'off',
+			},
+		},
+	],
 });
 ```
 
 ## Available rules
 
 A list of rules that we are currently based is in [here](https://qwik.dev/docs/advanced/eslint/).
-
-- ✅: Supported
-- ⌛️: In progress
-- ⚓: Native support
 
 |           Rule           |                               Status                               |
 | :----------------------: | :----------------------------------------------------------------: |
