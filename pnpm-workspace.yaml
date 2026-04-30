@@ -1,13 +1,13 @@
 catalogs:
   build:
-    vite-plus: ^0.1.19
-  types:
-    '@types/node': ^25.6.0
-    typescript: ^5.9.3
+    vite-plus: ^0.1.20
+  dev:
+    bumpp: ^11.0.1
   lint:
-    '@oxlint/plugins': ^1.61.0
+    '@oxlint/plugins': ^1.62.0
     oxlint: ^1.61.0
   prod:
     pathe: ^2.0.3
-  dev:
-    bumpp: ^11.0.1
+  types:
+    '@types/node': ^25.6.0
+    typescript: ^5.9.3
