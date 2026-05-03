@@ -1,4 +1,4 @@
-import { eslintCompatPlugin } from '@oxlint/plugins';
+import { eslintCompatPlugin, type Plugin } from '@oxlint/plugins';
 import { jsxATag } from '@rules/jsxATag';
 import { jsxImg } from '@rules/jsxImg';
 import { jsxNoScriptUrl } from '@rules/jsxNoScriptUrl';
@@ -8,7 +8,7 @@ import { noUseVisibleTask } from '@rules/noUseVisibleTask';
 import { preferClasslist } from '@rules/preferClasslist';
 import { useMethodUsage } from '@rules/useMethodUsage';
 
-const plugin = eslintCompatPlugin({
+const plugin: Plugin = eslintCompatPlugin({
 	meta: {
 		name: 'qwik',
 	},

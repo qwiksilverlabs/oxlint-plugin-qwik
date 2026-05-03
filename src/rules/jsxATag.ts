@@ -1,6 +1,6 @@
-import { defineRule } from '@oxlint/plugins';
+import { defineRule, type Rule } from '@oxlint/plugins';
 
-export const jsxATag = defineRule({
+export const jsxATag: Rule = defineRule({
 	meta: {
 		defaultOptions: [],
 		type: 'suggestion',

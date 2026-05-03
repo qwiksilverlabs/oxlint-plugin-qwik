@@ -5,7 +5,7 @@ RuleTester.it = vitest.it;
 RuleTester.itOnly = vitest.it.only;
 RuleTester.describe = vitest.describe;
 
-export const ruleTester = new RuleTester({
+export const ruleTester: RuleTester = new RuleTester({
 	languageOptions: {
 		parserOptions: {
 			ecmaFeatures: {

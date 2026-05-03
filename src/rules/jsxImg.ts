@@ -1,6 +1,6 @@
-import { defineRule, type ESTree } from '@oxlint/plugins';
+import { defineRule, type ESTree, type Rule } from '@oxlint/plugins';
 
-export const jsxImg = defineRule({
+export const jsxImg: Rule = defineRule({
 	meta: {
 		defaultOptions: [],
 		type: 'suggestion',

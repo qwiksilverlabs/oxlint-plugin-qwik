@@ -1,7 +1,7 @@
-import { defineRule } from '@oxlint/plugins';
+import { defineRule, type Rule } from '@oxlint/plugins';
 import { propName } from '../utils';
 
-export const preferClasslist = defineRule({
+export const preferClasslist: Rule = defineRule({
 	meta: {
 		type: 'problem',
 		docs: {

@@ -1,6 +1,6 @@
-import { defineConfig } from 'oxlint';
+import { defineConfig, type OxlintConfig } from 'oxlint';
 
-export const recommended = defineConfig({
+export const recommended: OxlintConfig = defineConfig({
 	overrides: [
 		{
 			files: ['**/*.tsx', '**/*.jsx', '**/*.ts', '**/*.js'],
@@ -22,7 +22,7 @@ export const recommended = defineConfig({
 	],
 });
 
-export const strict = defineConfig({
+export const strict: OxlintConfig = defineConfig({
 	overrides: [
 		{
 			files: ['**/*.tsx', '**/*.jsx', '**/*.ts', '**/*.js'],

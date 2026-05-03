@@ -1,4 +1,4 @@
-import { defineRule, type ESTree } from '@oxlint/plugins';
+import { defineRule, type ESTree, type Rule } from '@oxlint/plugins';
 import { normalize } from 'pathe';
 import { getProgramBody } from '../utils';
 
@@ -15,7 +15,7 @@ export const LINTER_FNS: Record<string, boolean> = {
 	globalAction$: true,
 };
 
-export const loaderLocation = defineRule({
+export const loaderLocation: Rule = defineRule({
 	meta: {
 		type: 'problem',
 		docs: {

@@ -1,6 +1,6 @@
-import { defineRule } from '@oxlint/plugins';
+import { defineRule, type Rule } from '@oxlint/plugins';
 
-export const noUseVisibleTask = defineRule({
+export const noUseVisibleTask: Rule = defineRule({
 	meta: {
 		type: 'suggestion',
 		docs: {

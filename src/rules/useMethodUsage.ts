@@ -1,6 +1,6 @@
-import { defineRule } from '@oxlint/plugins';
+import { defineRule, type Rule } from '@oxlint/plugins';
 
-export const useMethodUsage = defineRule({
+export const useMethodUsage: Rule = defineRule({
 	meta: {
 		type: 'problem',
 		docs: {

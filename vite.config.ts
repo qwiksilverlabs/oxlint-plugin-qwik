@@ -1,4 +1,3 @@
-import { resolve } from 'node:path';
 import { defineConfig } from 'vite-plus';
 
 export default defineConfig({
@@ -13,9 +12,7 @@ export default defineConfig({
 		exports: true,
 	},
 	resolve: {
-		alias: {
-			'@rules': resolve(import.meta.dirname, 'src/rules'),
-		},
+		tsconfigPaths: true,
 	},
 	test: {
 		environment: 'node',

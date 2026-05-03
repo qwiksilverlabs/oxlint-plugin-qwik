@@ -1,4 +1,4 @@
-import { defineRule, type Fixer } from '@oxlint/plugins';
+import { defineRule, type Fixer, type Rule } from '@oxlint/plugins';
 
 const reactSpecificProps = [
 	{ from: 'className', to: 'class' },
@@ -8,7 +8,7 @@ const reactSpecificProps = [
 const domElementRegex = /^[a-z]/;
 export const isDOMElementName = (name: string): boolean => domElementRegex.test(name);
 
-export const noReactProps = defineRule({
+export const noReactProps: Rule = defineRule({
 	meta: {
 		type: 'problem',
 		docs: {

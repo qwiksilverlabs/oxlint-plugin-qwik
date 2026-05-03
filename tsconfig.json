@@ -14,8 +14,12 @@
 		"module": "esnext",
 		"noEmit": true,
 
+		"types": ["node"],
 		"lib": ["ESNext"],
 		"declaration": true,
+		"isolatedDeclarations": true,
+		"isolatedModules": true,
+
 		"paths": {
 			"@rules/*": ["./src/rules/*"]
 		}
