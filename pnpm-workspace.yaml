@@ -4,9 +4,9 @@ catalogs:
   dev:
     bumpp: ^11.0.1
     taze: ^19.11.0
+    oxlint: ^1.62.0
   lint:
     '@oxlint/plugins': ^1.62.0
-    oxlint: ^1.62.0
   prod:
     pathe: ^2.0.3
   types:
