@@ -38,8 +38,7 @@
 		"test:watch": "vp test watch",
 		"prepublishOnly": "vp run build",
 		"prepare": "vp config",
-		"bump": "bumpp",
-		"up": "taze"
+		"bump": "bumpp"
 	},
 	"dependencies": {
 		"@oxlint/plugins": "catalog:lint",
@@ -49,7 +48,6 @@
 		"@types/node": "catalog:types",
 		"bumpp": "catalog:dev",
 		"oxlint": "catalog:dev",
-		"taze": "catalog:dev",
 		"typescript": "catalog:types",
 		"vite-plus": "catalog:build"
 	},
