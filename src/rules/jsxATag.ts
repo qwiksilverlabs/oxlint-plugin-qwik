@@ -16,7 +16,7 @@ export const jsxATag: Rule = defineRule({
 				'Missing accessible label on <a> element. Add text content or an ariaLabel attribute.',
 		},
 		fixable: undefined,
-		hasSuggestions: true,
+		hasSuggestions: false,
 		schema: [],
 		defaultOptions: undefined,
 		deprecated: false,

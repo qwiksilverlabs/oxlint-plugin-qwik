@@ -13,7 +13,7 @@ export const noReactProps: Rule = defineRule({
 			preferFor: 'Use "for" instead of "htmlFor".',
 		},
 		fixable: 'code',
-		hasSuggestions: true,
+		hasSuggestions: false,
 		schema: [],
 		defaultOptions: undefined,
 		deprecated: false,

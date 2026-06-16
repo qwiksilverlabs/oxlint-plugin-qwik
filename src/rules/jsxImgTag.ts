@@ -24,7 +24,7 @@ export const jsxImgTag: Rule = defineRule({
 				'Serving images from public are not optimized. Import images using ESM instead.',
 		},
 		fixable: undefined,
-		hasSuggestions: true,
+		hasSuggestions: false,
 		schema: [],
 		defaultOptions: undefined,
 		deprecated: false,
