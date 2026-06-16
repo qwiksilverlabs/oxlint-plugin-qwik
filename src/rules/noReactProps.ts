@@ -1,64 +1,62 @@
-import { defineRule, type Fixer, type Rule } from '@oxlint/plugins';
-
-const reactSpecificProps = [
-	{ from: 'className', to: 'class' },
-	{ from: 'htmlFor', to: 'for' },
-];
-
-const domElementRegex = /^[a-z]/;
-export const isDOMElementName = (name: string): boolean => domElementRegex.test(name);
+import { defineRule, type Rule } from '@oxlint/plugins';
 
 export const noReactProps: Rule = defineRule({
 	meta: {
 		type: 'problem',
 		docs: {
-			recommended: 'warn',
-			description: 'Disallow usage of React-specific `className`/`htmlFor` props.',
+			description: 'Disallows React-specific props in Qwik JSX.',
+			recommended: true,
 			url: 'https://qwik.dev/docs/advanced/eslint/#no-react-props',
 		},
-		fixable: 'code',
-		schema: [],
 		messages: {
-			prefer: 'Prefer the `{{ to }}` prop over the deprecated `{{ from }}` prop.',
+			preferClass: 'Use "class" instead of "className".',
+			preferFor: 'Use "for" instead of "htmlFor".',
 		},
+		fixable: 'code',
+		hasSuggestions: true,
+		schema: [],
+		defaultOptions: undefined,
+		deprecated: false,
 	},
-
-	create(context) {
-		const modifyJsxSource = context.sourceCode
-			.getAllComments()
-			.some((c) => c.value.includes('@jsxImportSource'));
-		if (modifyJsxSource) {
-			return {};
-		}
-
+	createOnce(context) {
 		return {
-			JSXOpeningElement(node: any) {
-				for (const { from, to } of reactSpecificProps) {
-					const classNameAttribute = node.attributes.find(
-						(attr: any) =>
-							attr.type === 'JSXAttribute' &&
-							attr.name.type === 'JSXIdentifier' &&
-							attr.name.name === from,
-					);
+			JSXElement(node) {
+				const { name, attributes } = node.openingElement;
 
-					if (classNameAttribute && classNameAttribute.type === 'JSXAttribute') {
-						const hasTargetProp = node.attributes.some(
-							(attr: any) =>
-								attr.type === 'JSXAttribute' &&
-								attr.name.type === 'JSXIdentifier' &&
-								attr.name.name === to,
-						);
+				if (
+					name.type === 'JSXMemberExpression' ||
+					(name.type === 'JSXIdentifier' && name.name[0] !== name.name[0].toLowerCase())
+				)
+					return;
 
-						const fix = !hasTargetProp
-							? (fixer: Fixer) => fixer.replaceText(classNameAttribute.name, to)
-							: undefined;
+				if (attributes.some((attr) => attr.type === 'JSXSpreadAttribute')) return;
 
-						context.report({
-							node: classNameAttribute,
-							messageId: 'prefer',
-							data: { from, to },
-							fix,
-						});
+				for (const attribute of attributes) {
+					if (
+						attribute.type !== 'JSXAttribute' ||
+						attribute.name.type !== 'JSXIdentifier'
+					)
+						continue;
+
+					const { name } = attribute.name;
+
+					switch (name) {
+						case 'htmlFor':
+							context.report({
+								node: attribute,
+								messageId: 'preferFor',
+								fix: (fixer) => fixer.replaceText(attribute.name, 'for'),
+							});
+							break;
+						case 'className':
+							context.report({
+								node: attribute,
+								messageId: 'preferClass',
+								fix: (fixer) => fixer.replaceText(attribute.name, 'class'),
+							});
+							break;
+						default:
+							continue;
 					}
 				}
 			},
