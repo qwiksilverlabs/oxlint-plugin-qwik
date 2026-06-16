@@ -24,8 +24,10 @@ export const noReactProps: Rule = defineRule({
 				const { name, attributes } = node.openingElement;
 
 				if (
+					!name ||
 					name.type === 'JSXMemberExpression' ||
-					(name.type === 'JSXIdentifier' && name.name[0] !== name.name[0].toLowerCase())
+					(name.type === 'JSXIdentifier' &&
+						name.name.charAt(0) !== name.name.charAt(0).toLowerCase())
 				)
 					return;
 
