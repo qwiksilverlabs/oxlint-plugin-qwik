@@ -17,6 +17,7 @@ export const recommended: OxlintConfig = defineConfig({
 				'qwik/loader-location': 'warn',
 
 				'react/jsx-key': 'error',
+				'react/jsx-no-script-url': 'error',
 			},
 		},
 	],
@@ -39,6 +40,7 @@ export const strict: OxlintConfig = defineConfig({
 				'qwik/loader-location': 'error',
 
 				'react/jsx-key': 'error',
+				'react/jsx-no-script-url': 'error',
 			},
 		},
 	],
