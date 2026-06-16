@@ -1,5 +1,5 @@
+import { jsxImgTag } from '@rules/jsxImgTag';
 import { ruleTester } from '.';
-import { jsxImgTag } from '@/rule/jsxImgTag';
 
 ruleTester.run('jsx-img-tag', jsxImgTag, {
 	valid: [
