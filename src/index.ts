@@ -1,6 +1,6 @@
 import { eslintCompatPlugin, type Plugin } from '@oxlint/plugins';
 import { jsxATag } from '@rules/jsxATag';
-import { jsxImg } from '@rules/jsxImg';
+import { jsxImgTag } from '@rules/jsxImgTag';
 import { jsxNoScriptUrl } from '@rules/jsxNoScriptUrl';
 import { loaderLocation } from '@rules/loaderLocation';
 import { noReactProps } from '@rules/noReactProps';
@@ -14,7 +14,7 @@ const plugin: Plugin = eslintCompatPlugin({
 	},
 	rules: {
 		'jsx-a-tag': jsxATag,
-		'jsx-img': jsxImg,
+		'jsx-img-tag': jsxImgTag,
 		'use-method-usage': useMethodUsage,
 		'no-react-props': noReactProps,
 		'no-use-visible-task': noUseVisibleTask,
