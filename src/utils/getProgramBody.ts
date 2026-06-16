@@ -1,6 +1,6 @@
 import type { ESTree } from '@oxlint/plugins';
 
-export function getProgramBody(node: ESTree.Node) {
+export function getProgramBody(node: ESTree.Node): (ESTree.Directive | ESTree.Statement)[] {
 	let program = node;
 	while (program.type !== 'Program') {
 		program = program.parent;
