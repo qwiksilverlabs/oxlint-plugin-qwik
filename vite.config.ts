@@ -1,11 +1,11 @@
-import { defineConfig } from 'vite-plus';
+import { defineConfig, type UserConfig } from 'vite-plus';
 
-export default defineConfig({
+export const config: UserConfig = defineConfig({
 	staged: {
 		'*': 'vp check --fix',
 	},
 	pack: {
-		entry: ['./src/index.ts', './src/ruleset/index.ts'],
+		entry: ['./src/index.ts'],
 		format: ['esm'],
 		dts: true,
 		clean: true,
@@ -44,3 +44,5 @@ export default defineConfig({
 		],
 	},
 });
+
+export default config;

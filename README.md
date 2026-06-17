@@ -27,7 +27,7 @@ bun add -D oxlint-plugin-qwik
 The plugin includes two primary rulesets:
 
 ```typescript
-import { recommended, strict } from 'oxlint-plugin-qwik/ruleset';
+import { recommended, strict } from 'oxlint-plugin-qwik';
 import { defineConfig } from 'oxlint';
 
 export default defineConfig({

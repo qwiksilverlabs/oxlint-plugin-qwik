@@ -29,7 +29,6 @@
 	"type": "module",
 	"exports": {
 		".": "./dist/index.mjs",
-		"./ruleset": "./dist/ruleset/index.mjs",
 		"./package.json": "./package.json"
 	},
 	"scripts": {
