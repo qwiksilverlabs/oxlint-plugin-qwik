@@ -12,19 +12,14 @@ export const useMethodUsage: Rule = defineRule({
 		messages: {
 			useWrongFunction: 'Calling use* methods in wrong function.',
 		},
+		fixable: undefined,
+		hasSuggestions: false,
+		schema: [],
+		defaultOptions: undefined,
+		deprecated: false,
 	},
 
-	create(context) {
-		const sourceCode = context.sourceCode;
-
-		const modifyJsxSource = sourceCode
-			.getAllComments()
-			.some((c) => c.value.includes('@jsxImportSource'));
-
-		if (modifyJsxSource) {
-			return {};
-		}
-
+	createOnce(context) {
 		return {
 			'CallExpression[callee.name=/^use[A-Z]/]'(node) {
 				let parent = node.parent;
@@ -48,29 +43,25 @@ export const useMethodUsage: Rule = defineRule({
 						case 'TSAsExpression':
 							break;
 						case 'ArrowFunctionExpression':
-						case 'FunctionExpression':
-							if (parent.parent.type === 'VariableDeclarator') {
-								if (
-									parent.parent.id?.type === 'Identifier' &&
-									parent.parent.id.name.startsWith('use')
-								) {
-									return;
-								}
-							}
-							if (parent.parent.type === 'CallExpression') {
-								if (
-									parent.parent.callee.type === 'Identifier' &&
-									(parent.parent.callee.name === 'component$' ||
-										parent.parent.callee.name === 'renderHook')
-								) {
-									return;
-								}
-							}
+						case 'FunctionExpression': {
+							const pp = parent.parent;
+							if (
+								(pp.type === 'VariableDeclarator' &&
+									pp.id?.type === 'Identifier' &&
+									pp.id.name.startsWith('use')) ||
+								(pp.type === 'CallExpression' &&
+									pp.callee.type === 'Identifier' &&
+									(pp.callee.name === 'component$' ||
+										pp.callee.name === 'renderHook'))
+							)
+								return;
+
 							context.report({
 								node,
 								messageId: 'useWrongFunction',
 							});
 							return;
+						}
 						case 'FunctionDeclaration':
 							if (!parent.id?.name.startsWith('use')) {
 								context.report({
