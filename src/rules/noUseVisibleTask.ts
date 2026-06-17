@@ -11,22 +11,22 @@ export const noUseVisibleTask: Rule = defineRule({
 		messages: {
 			noUseVisibleTask: `useVisibleTask$() runs eagerly and blocks the main thread, preventing user interaction until the task is finished. Consider using useTask$(), useOn(), useOnDocument(), or useOnWindow() instead. If you have to use a useVisibleTask$(), you can disable the warning with a '// eslint-disable-next-line qwik/no-use-visible-task' comment.`,
 		},
+		fixable: undefined,
+		hasSuggestions: false,
+		schema: [],
+		defaultOptions: undefined,
+		deprecated: false,
 	},
 	createOnce(context) {
 		return {
 			CallExpression(node) {
-				if (node.callee.type !== 'Identifier') {
-					return;
-				}
+				if (node.callee.type !== 'Identifier') return;
 
-				const fnName = node.callee.name;
-
-				if (fnName === 'useVisibleTask$') {
+				if (node.callee.name === 'useVisibleTask$')
 					context.report({
 						node: node.callee,
 						messageId: 'noUseVisibleTask',
 					});
-				}
 			},
 		};
 	},
