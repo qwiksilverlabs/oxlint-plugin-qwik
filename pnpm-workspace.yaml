@@ -9,5 +9,5 @@ catalogs:
   prod:
     pathe: ^2.0.3
   types:
-    '@types/node': ^25.8.0
+    '@types/node': ^26.0.0
     typescript: ^5.9.3
