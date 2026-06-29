@@ -10,4 +10,4 @@ catalogs:
     pathe: ^2.0.3
   types:
     '@types/node': ^25.8.0
-    typescript: ^5.9.3
+    typescript: ^6.0.0
