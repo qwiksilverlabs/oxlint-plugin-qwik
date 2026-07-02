@@ -1,6 +1,6 @@
 catalogs:
   build:
-    vite-plus: ^0.1.21
+    vite-plus: ^0.2.0
   dev:
     bumpp: ^11.1.0
     oxlint: ^1.64.0
