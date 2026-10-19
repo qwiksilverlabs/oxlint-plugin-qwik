@@ -2,7 +2,7 @@ catalogs:
   build:
     vite-plus: ^0.1.21
   dev:
-    bumpp: ^11.1.0
+    bumpp: ^12.0.0
     oxlint: ^1.64.0
   lint:
     '@oxlint/plugins': ^1.64.0
